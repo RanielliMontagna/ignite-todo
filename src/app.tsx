@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PlusCircle } from "phosphor-react";
 
 import "./global.css";
 import styles from "./app.module.css";
@@ -19,6 +20,8 @@ function App() {
     handleNewTaskChange,
     handleSubmit,
     handleNewInvalidTask,
+    handleRemoveTask,
+    handleToggleTaskCompletion,
   } = useApp();
 
   return (
@@ -34,7 +37,9 @@ function App() {
             required
             onInvalid={handleNewInvalidTask}
           />
-          <Button type="submit">Criar</Button>
+          <Button type="submit">
+            Criar <PlusCircle size={18} />
+          </Button>
         </form>
         <div className={styles.tasks}>
           <header className={styles.tasksHeader}>
@@ -48,11 +53,20 @@ function App() {
               </span>
             </p>
           </header>
-          {tasks.length > 0 ? (
-            tasks.map((task) => <Task key={task.id} />)
-          ) : (
-            <EmptyState />
-          )}
+          <main>
+            {tasks.length > 0 ? (
+              tasks.map((task) => (
+                <Task
+                  key={task.id}
+                  {...task}
+                  handleRemoveTask={handleRemoveTask}
+                  handleToggleTaskCompletion={handleToggleTaskCompletion}
+                />
+              ))
+            ) : (
+              <EmptyState />
+            )}
+          </main>
         </div>
       </div>
     </div>

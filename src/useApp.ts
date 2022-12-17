@@ -1,16 +1,17 @@
 import { useState, InvalidEvent } from "react";
+import uuid from "react-uuid";
 
-interface Task {
-  id: number;
+export interface ITask {
+  id: string;
   title: string;
   isCompleted: boolean;
 }
 
 export function useApp() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const [newTaskTitle, _setNewTaskTitle] = useState("");
 
-  function handleToggleTaskCompletion(id: number) {
+  function handleToggleTaskCompletion(id: string) {
     const updatedTasks = tasks.map((task) =>
       task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
     );
@@ -20,7 +21,7 @@ export function useApp() {
 
   function handleCreateNewTask() {
     const newTask = {
-      id: tasks.length + 1,
+      id: uuid(),
       title: newTaskTitle,
       isCompleted: false,
     };
@@ -29,7 +30,7 @@ export function useApp() {
     _setNewTaskTitle("");
   }
 
-  function handleRemoveTask(id: number) {
+  function handleRemoveTask(id: string) {
     const updatedTasks = tasks.filter((task) => task.id !== id);
 
     setTasks(updatedTasks);

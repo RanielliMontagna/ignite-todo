@@ -22,6 +22,12 @@
   box-sizing: border-box;
 }
 
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 1px var(--purple-500);
+  transition: box-shadow 0.1s ease-in-out;
+}
+
 body {
   background: var(--gray-600);
   color: var(--gray-300);

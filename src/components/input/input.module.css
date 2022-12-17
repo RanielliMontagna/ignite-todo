@@ -1,0 +1,12 @@
+.input {
+  background: var(--gray-500);
+  color: var(--gray-100);
+
+  border-radius: 8px;
+  border: none;
+  padding: 1rem;
+}
+
+.input::-webkit-input-placeholder {
+  color: var(--gray-300);
+}

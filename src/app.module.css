@@ -1,0 +1,40 @@
+.wrapper {
+  max-width: 46rem;
+  margin: 0rem auto;
+  margin-top: -1.75rem;
+  padding: 0rem 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.todoForm {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.tasksHeader {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.tasksHeader span {
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.tasksHeader p:first-child {
+  color: var(--blue-500);
+  font-weight: bold;
+}
+
+.tasksHeader p:last-child {
+  color: var(--purple-500);
+  font-weight: bold;
+}

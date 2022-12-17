@@ -1,0 +1,30 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+
+  color: var(--gray-300);
+
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+  padding: 4rem 1.5rem;
+  gap: 1rem;
+}
+
+.emptyState .icon {
+  color: var(--gray-400);
+}
+
+.emptyState .text {
+  display: flex;
+  flex-direction: column;
+}
+
+.emptyState .text strong {
+  line-height: 1.4;
+}
+
+.emptyState .text span {
+  line-height: 1.4;
+}

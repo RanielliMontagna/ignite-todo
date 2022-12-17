@@ -38,3 +38,9 @@
   color: var(--purple-500);
   font-weight: bold;
 }
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

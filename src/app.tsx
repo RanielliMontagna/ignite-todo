@@ -7,6 +7,8 @@ import { Header } from "./components/header/header";
 import { Button } from "./components/button/button";
 import { Input } from "./components/input/input";
 import { useApp } from "./useApp";
+import { EmptyState } from "./components/emptyState/emptyState";
+import { Task } from "./components/task/task";
 
 function App() {
   const {
@@ -34,7 +36,7 @@ function App() {
           />
           <Button type="submit">Criar</Button>
         </form>
-        <div>
+        <div className={styles.tasks}>
           <header className={styles.tasksHeader}>
             <p>
               Tarefas criadas <span>{tasksCount}</span>
@@ -46,7 +48,11 @@ function App() {
               </span>
             </p>
           </header>
-          <div className={styles.divider} />
+          {tasks.length > 0 ? (
+            tasks.map((task) => <Task key={task.id} />)
+          ) : (
+            <EmptyState />
+          )}
         </div>
       </div>
     </div>

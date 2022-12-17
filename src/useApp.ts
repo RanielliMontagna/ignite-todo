@@ -1,4 +1,4 @@
-import { useState, InvalidEvent } from "react";
+import { useState, useEffect, InvalidEvent } from "react";
 import uuid from "react-uuid";
 
 export interface ITask {
@@ -51,8 +51,32 @@ export function useApp() {
     handleCreateNewTask();
   }
 
+  function getTasksFromLocalStorage() {
+    const tasks = localStorage.getItem("@todo:tasks");
+
+    if (tasks) {
+      setTasks(JSON.parse(tasks));
+    }
+  }
+
+  function setTasksToLocalStorage() {
+    localStorage.setItem("@todo:tasks", JSON.stringify(tasks));
+  }
+
   const tasksCount = tasks.length;
   const completedTasksCount = tasks.filter((task) => task.isCompleted).length;
+
+  useEffect(() => {
+    getTasksFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", setTasksToLocalStorage);
+
+    return () => {
+      window.removeEventListener("beforeunload", setTasksToLocalStorage);
+    };
+  }, [tasks]);
 
   return {
     tasks,
